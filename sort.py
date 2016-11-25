@@ -16,8 +16,8 @@ def selection_sort(l):
 		l[l.index(min(unsorted_list))] = l[i]
 		l[i] = minimum
 		print(l)
-
+	return l
 
 
 #bubble_sort([-1,-3,-1,0,25,9,7,5,17])
-#selection_sort([5,4,3,2,1])
+selection_sort([5,4,3,2,1])
