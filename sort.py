@@ -9,4 +9,15 @@ def bubble_sort(l):
 		print("Pass " + str(num_of_pass) + ". Result: " + str(l))
 	return l
 
-bubble_sort([-1,-3,-1,0,25,9,7,5,17])
+def selection_sort(l):
+	for i in range(0,len(l)):
+		unsorted_list = l[i:]
+		minimum = min(unsorted_list) # this step is O(n)
+		l[l.index(min(unsorted_list))] = l[i]
+		l[i] = minimum
+		print(l)
+
+
+
+#bubble_sort([-1,-3,-1,0,25,9,7,5,17])
+#selection_sort([5,4,3,2,1])
