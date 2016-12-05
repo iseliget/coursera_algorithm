@@ -19,5 +19,44 @@ def selection_sort(l):
 	return l
 
 
-#bubble_sort([-1,-3,-1,0,25,9,7,5,17])
-selection_sort([5,4,3,2,1])
+def merge(array1,array2):
+	'''
+	will be used in merge sort
+	'''
+	result = [0]*len(array1)*2
+
+	i = 0
+	j = 0
+
+	for k in range(0,len(result)):
+		if i != len(array1)-1 and j != len(array2)-1:
+			if array1[i] < array2[j]:
+				result[k] = array1[i]
+				i = i + 1
+			elif array1[i] > array2[j]:
+				result[k] = array2[j]
+				j = j + 1
+		elif i == len(array1)-1:
+			if j > len(array2)-1:
+				result[-1] = array1[-1]
+				return result
+			elif array1[i] < array2[j]:
+				result[k] = array1[i]
+				result[k+1:] = array2[j:]
+				return result
+			else:
+				result[k] = array2[j]
+				j = j + 1
+		elif j == len(array2)-1:
+			if i > len(array1)-1:
+				result[-1] = array2[-1]
+			elif array2[j] < array1[i]:
+				result[k] = array2[j]
+				result[(k+1):] = array1[i:]
+				return result
+			else:
+				result[k] = array1[i]
+				i = i + 1
+				
+	return result
+
