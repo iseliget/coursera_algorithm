@@ -60,3 +60,11 @@ def merge(array1,array2):
 				
 	return result
 
+def mergeSort(array):
+	if len(array) == 1:
+		return array
+	else:
+		left_array = mergeSort(array[0:len(array)//2])
+		right_array = mergeSort(array[len(array)//2:])
+		return merge(left_array,right_array)
+
