@@ -44,37 +44,35 @@ def crossInv(left_array,right_array):
 		# print(inversions)
 
 
-def mergeSort(array):
+def countInv(array):
 	if len(array) < 2:
 		return [array,0]
 	else:
-		l = mergeSort(array[0:len(array)//2])[0]
-		linv = mergeSort(array[0:len(array)//2])[1]
+		result1 = countInv(array[0:len(array)//2])
+		l = result1[0]
+		linv = result1[1]
 
-		r = mergeSort(array[len(array)//2:])[0]
-		rinv = mergeSort(array[len(array)//2:])[1]
+		result2 = countInv(array[len(array)//2:])
+		r = result2[0]
+		rinv = result2[1]
 
-		c = crossInv(l, r)[0]
-		cinv = crossInv(l, r)[1]
+		result3 = crossInv(l,r)
+		c = result3[0]
+		cinv = result3[1]
 
 		tinv = linv + rinv + cinv
 
 		return [c,tinv]
 
-print(crossInv([1,2],[4,8]))
-print(crossInv([4,8],[1,2]))
-print(crossInv([1,4],[2,3]))
-print(crossInv([2,3],[1,4]))
-print(crossInv([1,4],[2,5]))
-print(crossInv([2,5],[1,4]))
+def slowInv(array):
+	inversions = 0
+	for i in range(0,len(array)):
+		for j in range(i,len(array)):
+			if array[i] > array[j]:
+				inversions += 1
+	return inversions
 
-print(mergeSort([3]))
-print(mergeSort([2,4]))
-print(mergeSort([3,4,2]))
-print(mergeSort([1]))
-print(mergeSort([5,6]))
-print(mergeSort([1,5,6]))
-print(mergeSort([3,2,4,1,5,6]))
-print(mergeSort([8,4]))
-print(mergeSort([2,1]))
-print(mergeSort([8,4,2,1]))
+print(countInv([1, 6, 3, 2, 4, 5]))
+print(countInv([9, 12, 3, 1, 6, 8, 2, 5, 14, 13, 11, 7, 10, 4, 0]))
+print(countInv([37, 7, 2, 14, 35, 47, 10, 24, 44, 17, 34, 11, 16, 48, 1, 39, 6, 33, 43, 26, 40, 4, 28, 5, 38, 41, 42, 12, 13, 21, 29, 18, 3, 19, 0, 32, 46, 27, 31, 25, 15, 36, 20, 8, 9, 49, 22, 23, 30, 45]))
+print(countInv([4, 80, 70, 23, 9, 60, 68, 27, 66, 78, 12, 40, 52, 53, 44, 8, 49, 28, 18, 46, 21, 39, 51, 7, 87, 99, 69, 62, 84, 6, 79, 67, 14, 98, 83, 0, 96, 5, 82, 10, 26, 48, 3, 2, 15, 92, 11, 55, 63, 97, 43, 45, 81, 42, 95, 20, 25, 74, 24, 72, 91, 35, 86, 19, 75, 58, 71, 47, 76, 59, 64, 93, 17, 50, 56, 94, 90, 89, 32, 37, 34, 65, 1, 73, 41, 36, 57, 77, 30, 22, 13, 29, 38, 16, 88, 61, 31, 85, 33, 54]))
