@@ -1,24 +1,3 @@
-class stack(object):
-	list_of_items = []
-
-	def __init__(self):
-		pass
-
-	def push(self,item):
-		self.list_of_items.append(item)
-
-	def top(self):
-		return self.list_of_items[-1]
-
-	def pop(self):
-		self.list_of_items.pop()
-
-	def isEmpty(self):
-		return self.list_of_items==[]
-
-	def getSize(self):
-		return len(self.list_of_items)
-
 # Implement the graph using adjacency list
 # The graph is a tree
 
