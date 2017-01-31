@@ -22,15 +22,15 @@ class stack(object):
 # Implement the graph using adjacency list
 # The graph is a tree
 myGraph = [[1,2],[0,3,4],[0,4,5],[1,6,7],[1,2],[2,8,9,10],[3],[3],[5],[5],[5]]
-exploredNodes = []
 
-def dfs(node):
+def dfs(graph,node):
+	exploredNodes = []
+
 	if node in exploredNodes:
 		pass
 	else:
 		exploredNodes.append(node)
-		for adj_nodes in myGraph[node]:
+		for adj_nodes in graph[node]:
 			dfs(adj_nodes)
 
-dfs(0)
-print(exploredNodes)
+dfs(myGraph,0) # starts with node 0 in myGraph
