@@ -32,9 +32,9 @@ while len(discovered_nodes) < len(graph)-1 :
 				greedy_criterion = shortest_path_distances[node] + adj_tuples[1]
 				if greedy_criterion < min_greedy_criterion:
 					min_greedy_criterion = greedy_criterion
-					edge_to_be_added = adj_tuples[0]
+					node_to_be_added = adj_tuples[0]
 
-	discovered_nodes.append(edge_to_be_added)
+	discovered_nodes.append(node_to_be_added)
 
-	shortest_path_distances[edge_to_be_added] = min_greedy_criterion
+	shortest_path_distances[node_to_be_added] = min_greedy_criterion
 
